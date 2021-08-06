@@ -28,7 +28,7 @@ def display_word(letter, guesses):
 
 def print_word(word, guesses):
     output_letters = [display_word(letter, letter_guesses) for letter in mystery_word]
-    print(' '.join(output_letters))
+    return(' '.join(output_letters))
 
 
 while user_input != 'Quit':
@@ -42,9 +42,11 @@ while user_input != 'Quit':
     elif user_input not in letter_guesses and user_input in mystery_word:
         letter_guesses.append(user_input)
         guesses_display = print_word(mystery_word, letter_guesses)
-                        
-        if mystery_word == guesses_display:
+        print(guesses_display)
+                
+        if "_" not in guesses_display:
             print('You won!')
+            break
 
         else:
             user_input = input('Correct! Make your next guess. ')
