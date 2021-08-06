@@ -42,7 +42,7 @@ while user_input != 'Quit':
     elif user_input not in letter_guesses and user_input in mystery_word:
         letter_guesses.append(user_input)
         guesses_display = print_word(mystery_word, letter_guesses)
-        
+                        
         if mystery_word == guesses_display:
             print('You won!')
 
@@ -50,5 +50,5 @@ while user_input != 'Quit':
             user_input = input('Correct! Make your next guess. ')
 
     elif user_input not in letter_guesses and user_input not in mystery_word:
-        user_input = input('Incorrect! Try again. ')
         letter_guesses.append(user_input)
+        user_input = input('Incorrect! Try again. ')
