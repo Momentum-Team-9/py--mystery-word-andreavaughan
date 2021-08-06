@@ -14,7 +14,7 @@ mystery_word = 'better'
 
 user_input = input('Guess a letter: ')
 
-guess_count = 1 
+guess_count = 0 
 
 letter_guesses = []
 
@@ -32,11 +32,8 @@ def print_word(word, guesses):
 
 
 while user_input != 'Quit':
-    if guess_count == 8:
-        print('You are out of guesses!')
-        break
-
-    elif user_input in letter_guesses:
+    
+    if user_input in letter_guesses:
         user_input = input('You\'ve already guessed that letter! Try again. ')
 
     elif user_input not in letter_guesses and user_input in mystery_word:
@@ -52,5 +49,13 @@ while user_input != 'Quit':
             user_input = input('Correct! Make your next guess. ')
 
     elif user_input not in letter_guesses and user_input not in mystery_word:
-        letter_guesses.append(user_input)
-        user_input = input('Incorrect! Try again. ')
+        guess_count += 1
+
+        if guess_count == 8:
+            print('You are out of guesses!')
+            break
+
+        else:
+            print(f'You\'ve used {guess_count} of 8 incorrect guesses.')
+            letter_guesses.append(user_input)
+            user_input = input('Incorrect! Try again. ')
