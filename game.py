@@ -1,8 +1,9 @@
-# Computer returns text letting user know how many letters and shows spaces
 
 # responses should not be case-sensitive 
 
 # If input is not valid letter, show message that prompts user to put in a valid letter
+
+#Reveal word to user if they don't guess it 
 
 # Ask user if they want to play again
 
@@ -31,10 +32,6 @@ def set_game_level():
 
 mystery_word = set_game_level()
 
-print(mystery_word)
-
-user_input = input('Guess a letter: ')
-
 guess_count = 0 
 
 letter_guesses = []
@@ -52,6 +49,13 @@ def print_word(word, guesses):
     return(' '.join(output_letters))
 
 
+guesses_display = print_word(mystery_word, letter_guesses)
+
+print(f'Your word has {len(mystery_word)} letters:  ', guesses_display)
+print(mystery_word)
+
+user_input = input('Guess a letter: ')
+
 while user_input != 'Quit':
     
     if user_input in letter_guesses:
@@ -59,7 +63,6 @@ while user_input != 'Quit':
 
     elif user_input not in letter_guesses and user_input in mystery_word:
         letter_guesses.append(user_input)
-        guesses_display = print_word(mystery_word, letter_guesses)
         print(guesses_display)
                 
         if "_" not in guesses_display:
