@@ -1,14 +1,24 @@
-# User selects difficulty
-# Computer selects word from .txt based on difficulty 
+# User selects dificulty
+# Computer selects word from .txt based on dificulty 
 # Computer returns text letting user know how many letters and shows spaces
-# User inputs letter
-# Take letter input and compare to word
-# If letter is in word, return space filled in with letter, and input for next word 
-# If letter is not, return wrong letter message and increment guess counter 
+
+
+
+
 # If input is not valid letter, show message that prompts user to put in a valid letter
-# If input is an already guessed letter, show message and don't increment guess counter
-# End game when letter is complete OR guess count reaches 8
+
+
 # Ask user if they want to play again
+
+import random
+
+with open('words.txt') as words:
+    lines = words.readlines()
+    lines = [line.replace('\n', '') for line in lines]
+    easy_words = [line for line in lines if 4 <= len(line) <= 6]
+    normal_words = [line for line in lines if 6 <= len(line) <= 8]
+    hard_words = [line for line in lines if 8 <= len(line)]
+
 
 mystery_word = 'better'
 
