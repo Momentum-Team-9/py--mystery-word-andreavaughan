@@ -1,9 +1,7 @@
-
 # responses should not be case-sensitive 
 
 # If input is not valid letter, show message that prompts user to put in a valid letter
 
-# Ask user if they want to play again
 
 import random
 
@@ -47,25 +45,37 @@ def print_word(word, guesses):
     return(' '.join(output_letters))
 
 
-guesses_display = print_word(mystery_word, letter_guesses)
+first_display = print_word(mystery_word, letter_guesses)
 
-print(f'Your word has {len(mystery_word)} letters:  ', guesses_display)
+print(f'Your word has {len(mystery_word)} letters:  ', first_display)
 print(mystery_word)
 
 user_input = input('Guess a letter: ')
 
-while user_input != 'Quit':
+while user_input != 'quit':
     
     if user_input in letter_guesses:
         user_input = input('You\'ve already guessed that letter! Try again. ')
 
     elif user_input not in letter_guesses and user_input in mystery_word:
         letter_guesses.append(user_input)
-        print(print_word(mystery_word, letter_guesses))
+        guesses_display = print_word(mystery_word, letter_guesses)
+        print(guesses_display)
                 
         if "_" not in guesses_display:
             print('You won!')
-            break
+            user_input = input('Do you want to play again? Type yes or quit. ')
+            if user_input == 'yes':
+                difficulty = input('Select your difficulty level by typing "easy" "normal" or "hard". ')
+
+                mystery_word = set_game_level()
+                guess_count = 0 
+                letter_guesses = []
+                first_display = print_word(mystery_word, letter_guesses)
+                print(f'Your word has {len(mystery_word)} letters:  ', first_display)
+                print(mystery_word)
+
+                user_input = input('Guess a letter: ')
 
         else:
             user_input = input('Correct! Make your next guess. ')
@@ -76,7 +86,18 @@ while user_input != 'Quit':
         if guess_count == 8:
             print('You are out of guesses!')
             print(f'The mystery word was {mystery_word}.')
-            break
+            user_input = input('Do you want to play again? Type yes or quit. ')
+            if user_input == 'yes':
+                difficulty = input('Select your difficulty level by typing "easy" "normal" or "hard". ')
+
+                mystery_word = set_game_level()
+                guess_count = 0 
+                letter_guesses = []
+                first_display = print_word(mystery_word, letter_guesses)
+                print(f'Your word has {len(mystery_word)} letters:  ', first_display)
+                print(mystery_word)
+
+                user_input = input('Guess a letter: ')
 
         else:
             print(f'You\'ve used {guess_count} of 8 incorrect guesses.')
