@@ -61,7 +61,7 @@ while user_input != 'Quit':
 
     elif user_input not in letter_guesses and user_input in mystery_word:
         letter_guesses.append(user_input)
-        print(guesses_display)
+        print(print_word(mystery_word, letter_guesses))
                 
         if "_" not in guesses_display:
             print('You won!')
