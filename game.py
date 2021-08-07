@@ -1,12 +1,8 @@
-# User selects dificulty
-# Computer selects word from .txt based on dificulty 
 # Computer returns text letting user know how many letters and shows spaces
 
-
-
+# responses should not be case-sensitive 
 
 # If input is not valid letter, show message that prompts user to put in a valid letter
-
 
 # Ask user if they want to play again
 
@@ -19,8 +15,23 @@ with open('words.txt') as words:
     normal_words = [line for line in lines if 6 <= len(line) <= 8]
     hard_words = [line for line in lines if 8 <= len(line)]
 
+difficulty = input('Select your difficulty level by typing "easy" "normal" or "hard". ')
 
-mystery_word = 'better'
+
+def set_game_level():
+    if difficulty == 'easy':
+        word_choice = random.choice(easy_words)
+    elif difficulty == 'normal':
+        word_choice = random.choice(normal_words)
+    elif difficulty == 'hard':
+        word_choice = random.choice(hard_words)
+
+    return word_choice
+
+
+mystery_word = set_game_level()
+
+print(mystery_word)
 
 user_input = input('Guess a letter: ')
 
