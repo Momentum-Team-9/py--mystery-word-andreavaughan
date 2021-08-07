@@ -3,8 +3,6 @@
 
 # If input is not valid letter, show message that prompts user to put in a valid letter
 
-#Reveal word to user if they don't guess it 
-
 # Ask user if they want to play again
 
 import random
@@ -77,6 +75,7 @@ while user_input != 'Quit':
 
         if guess_count == 8:
             print('You are out of guesses!')
+            print(f'The mystery word was {mystery_word}.')
             break
 
         else:
